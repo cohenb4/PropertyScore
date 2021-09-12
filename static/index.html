@@ -1,36 +1,24 @@
 <!DOCTYPE html>
 <html>
+<!DOCTYPE html>
+<html>
 
 <head>
-    <style>
-        .fa-check
-        {
-            color: green;
-        }
-        .fa-remove
-        {
-            color: red;
-        }
-        .color-gold
-        {
-            color: gold;
-        }
-    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>PROPERTYSCORE</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/bootstrap/css/bootstrap.min.css')}}">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/fontawesome5-overrides.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/Bootstrap-4---Table-Fixed-Header.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/Header-Blue.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/Map-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome5-overrides.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Header-Blue.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Bootstrap-4---Table-Fixed-Header.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Header-Blue.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Map-Clean.css')}}">
 </head>
-
 
 <body id="page-top">
     <div id="wrapper">
@@ -145,11 +133,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding: 15px;"><h3 class="text-dark mb-0">{{address}}</h3>
-                    <div class="container text-end" style="padding-left: 0px;width: 10%;margin-right: 5%;"><i class="{{star1}}"></i><i class="{{star2}}"></i><i class="{{star3}}"></i><i class="{{star4}}"></i><i class="{{star5}}"></i>
-                        <div></div>
-                    </div>
-                </div>
+                <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding: 15px;"><h3 class="text-dark mb-0">{{address}}</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6" style="width: 50%;">
@@ -205,10 +189,10 @@
                                                     <h4 class="small fw-bold">Cash Flow</h4>
                                                 </div>
                                                 <div class="col">
-                                                    <h4 class="small fw-bold">{{ltCashFlow}}<i class="{{ltCashFlowicon}}"></i></h4>
+                                                    <h4 class="small fw-bold">{{ltCashFlow}}</h4>
                                                 </div>
                                                 <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
-                                                    <h4 class="small fw-bold">{{stCashFlow}}<i class="{{stCashFlowicon}}"></i></h4>
+                                                    <h4 class="small fw-bold">{{stCashFlow}}</h4>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -238,10 +222,10 @@
                                                     <h4 class="small fw-bold">Cap Rate</h4>
                                                 </div>
                                                 <div class="col">
-                                                    <h4 class="small fw-bold">{{ltCapRate}}<i class="{{ltCapRateicon}}"></i></h4>
+                                                    <h4 class="small fw-bold">{{ltCapRate}}</h4>
                                                 </div>
                                                 <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
-                                                    <h4 class="small fw-bold">{{stCapRate}}<i class="{{stCapRateicon}}"></i></h4>
+                                                    <h4 class="small fw-bold">{{stCapRate}}</h4>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -249,21 +233,10 @@
                                                     <h4 class="small fw-bold">Cash On Cash</h4>
                                                 </div>
                                                 <div class="col">
-                                                    <h4 class="small fw-bold">{{ltCashOnCash}}<i class="{{ltCOCicon}}"></i></h4>
+                                                    <h4 class="small fw-bold">{{ltCashOnCash}}</h4>
                                                 </div>
                                                 <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
-                                                    <h4 class="small fw-bold">{{stCashOnCash}}<i class="{{stCOCicon}}"></i></h4>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
-                                                    <h4 class="small fw-bold">{{term}} Year Return</h4>
-                                                </div>
-                                                <div class="col">
-                                                    <h4 class="small fw-bold">{{ltROI}}</h4>
-                                                </div>
-                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
-                                                    <h4 class="small fw-bold">{{stROI}}</h4>
+                                                    <h4 class="small fw-bold">{{stCashOnCash}}</h4>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -282,13 +255,99 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6" style="width: 50%;"><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDnYCe9ih0LgLIDY37GUyjsihcXev8sHO0&amp;q=%7B%7Baddress%7D%7D&amp;zoom=11" width="100%" height="400"></iframe></div>
+                        <div class="col-md-6" style="width: 50%;"><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDnYCe9ih0LgLIDY37GUyjsihcXev8sHO0&amp;q=Paris%2C+France&amp;zoom=11" width="100%" height="400"></iframe></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Traditional</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 50px;">Year</th>
+                                            <th style="width: 200px;">Income</th>
+                                            <th style="width: 200px;">Mortgage</th>
+                                            <th style="width: 200px;">Expenses</th>
+                                            <th style="width: 200px;">Cash Flow</th>
+                                            <th style="width: 200px;">Equity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{year}}</td>
+                                            <td>{{ltIncome}}</td>
+                                            <td>{{mortgage}}</td>
+                                            <td>{{ltExpenses}}</td>
+                                            <td>{{ltCashFlowYear}}</td>
+                                            <td>{{trequity}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>{{lastYear}}</strong></td>
+                                            <td><strong>{{sumltIncome}}</strong></td>
+                                            <td><strong>{{sumMortgage}}</strong></td>
+                                            <td><strong>{{sumltExpenses}}</strong></td>
+                                            <td><strong>{{sumltCashFlow}}</strong></td>
+                                            <td><strong>{{sumltEquity}}</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="margin-top: 30px;">
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Short Term</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 50px;">Year</th>
+                                            <th style="width: 200px;">Income</th>
+                                            <th style="width: 200px;">Mortgage</th>
+                                            <th style="width: 200px;">Expenses</th>
+                                            <th style="width: 200px;">Cash Flow</th>
+                                            <th style="width: 200px;">Equity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{year}}</td>
+                                            <td>{{stIncome}}</td>
+                                            <td>{{mortgage}}</td>
+                                            <td>{{ltExpenses}}</td>
+                                            <td>{{ltCashFlowYear}}</td>
+                                            <td>{{ltequity}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>{{lastYear}}</strong></td>
+                                            <td><strong>{{sumstIncome}}</strong></td>
+                                            <td><strong>{{sumMortgage}}</strong></td>
+                                            <td><strong>{{sumstExpenses}}</strong></td>
+                                            <td><strong>{{sumstCashFlow}}</strong></td>
+                                            <td><strong>{{sumstEquity}}</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © PROPERTYSCORE 2021</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
