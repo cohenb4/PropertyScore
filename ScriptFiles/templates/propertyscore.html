@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Score | Investment Analysis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      padding: 90px 0 0;
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      z-index: 99;
+    }
+
+    @media (max-width: 767.98px) {
+      .sidebar {
+        top: 11.5rem;
+        padding: 0;
+      }
+    }
+
+    .navbar {
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+    }
+
+    @media (min-width: 767.98px) {
+      .navbar {
+        top: 0;
+        position: sticky;
+        z-index: 999;
+      }
+    }
+
+    .sidebar .nav-link {
+      color: #333;
+    }
+
+    .sidebar .nav-link.active {
+      color: #0d6efd;
+    }
+    .label-default {
+        background-color: #777;
+    }
+    .label {
+        display: inline;
+        padding: .2em .6em .3em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+    }
+        .title
+        {
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+        .nav
+        {
+            top: 0;
+        }
+        .title-right
+        {
+            position: right;
+            float: right;
+            margin-bottom: -20px;
+            margin-top: -55px;
+        }
+        #logo {
+      display: table-cell;
+      line-height: 0;
+      width: 20%;
+    }
+
+    #logo img {
+      width: 100%;
+      height: auto;
+    }
+        .fa {
+      font-size: 25px;
+    }
+        .checked {
+      color: orange;
+    }
+        /* Float four columns side by side */
+    .column {
+      float: left;
+      width: 33%;
+      padding: 0 5px;
+    }
+
+    /* Remove extra left and right margins, due to padding in columns */
+    .row {margin: 0 -5px;}
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive columns - one column layout (vertical) on small screens */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light p-3">
+      <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+          <a class="navbar-brand" href="#">
+              <div id="logo">
+            <img src="https://www.linkpicture.com/q/Artboard-1_2.png" alt="Property Score Logo" style="float:left" />
+              </div>
+          </a>
+          <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+      <div class="col-12 col-md-4 col-lg-2">
+          <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+      </div>
+      <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+          </div>
+    </nav>
+  <div class="container-fluid">
+      <div class="row">
+          <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+              <div class="position-sticky pt-md-5">
+                  <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/propertyscore">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-property"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                          <span class="ml-2">Property Score</span>
+                        </a>                          
+                      <li class="nav-item">
+                        <a class="nav-link" href="/locationscore">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                          <span class="ml-2">Location Score</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                          <span class="ml-2">Rules & Regulations</span>
+                        </a>
+                      </li>
+                  </ul>
+                      </div>
+                      </nav>
+          <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4" for="propertyscore" method="GET">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="propertyscore">Property Score</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{street}}</li>
+                  </ol>
+                </nav>
+              <div class = "titles">
+                  <div class="title left">
+                      <h4 class="h4">{{address}}</h4>
+                      <span class="label label-default">{{propertyType}}</span>
+                      <span class="label label-default">{{beds}} Beds</span>
+                      <span class="label label-default">{{baths}} Baths</span>
+                      <span class="label label-default">{{sqft}} SQFT</span>
+                  </div>
+                  <div class="title-right">
+                    <span class="heading">Property Rating</span>
+                    
+                  </div>
+                  <hr style="border:3px solid #f1f1f1">
+               </div>
+              <div class = "row">
+                  <div class="column">
+              <div class="card">
+              <div class="card-header">
+                Long Term Financials
+              </div>
+                  <span class="{{ltstar1}}" style = "positon:left; display: inline; width = 10%;"></span>
+                  <span class="{{ltstar2}}" style = "positon:left; display: inline; width = 10%;"></span>
+                  <span class="{{ltstar3}}" style = "positon:left; display: inline; width = 10%;"></span>
+                  <span class="{{ltstar4}}" style = "positon:left; display: inline; width = 10%;"></span>
+                  <span class="{{ltstar5}}" style = "positon:left; display: inline; width = 10%;"></span>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cashflow: {{ltcashFlow}}</li><img src="{{cfcheck}}"/>
+                <li class="list-group-item">Price: {{price}}</li>
+                <li class="list-group-item">Monthly Payment: {{monthlyPayment}}</li>
+                <li class="list-group-item">Cap Rate: {{ltcapRate}}</li>
+                <li class="list-group-item">Cash On Cash: {{ltcashOnCash}}</li>
+              </ul>
+                  <div class="card-footer">
+                Break Even Time: {{breakEvenLT}}
+              </div>
+            </div>
+                  </div>
+                  <div class="column">
+              <div class="card">
+              <div class="card-header">
+                Short Term Financials
+              </div>
+                  <span class="{{ststar1}}"></span>
+                  <span class="{{ststar2}}"></span>
+                  <span class="{{ststar3}}"></span>
+                  <span class="{{ststar4}}"></span>
+                  <span class="{{ststar5}}"></span>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cashflow: {{stcashFlow}}</li>
+                <li class="list-group-item">Price: {{price}}</li>
+                <li class="list-group-item">Monthly Payment: {{monthlyPayment}}</li>
+                <li class="list-group-item">Cap Rate: {{stcapRate}}</li>
+                <li class="list-group-item">Cash On Cash: {{stcashOnCash}}</li>
+              </ul>
+              <div class="card-footer">
+                Break Even Time: {{breakEvenST}}
+              </div>
+            </div>
+                  </div>
+                  <div class ="column">
+              <div class="card">
+                <img src="{{image}}"/>
+              </div>
+                  </div>
+                  </div>
+              <footer class="pt-5 d-flex justify-content-between">
+              <span>Copyright © 2019-2020 <a href="https://themesberg.com">propertyscore</a></span>
+              <ul class="nav m-0">
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" href="#">Terms and conditions</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" href="#">Contact</a>
+                  </li>
+                </ul>
+            </footer>
+           </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+</body>
+</html>

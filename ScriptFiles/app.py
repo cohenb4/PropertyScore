@@ -8,8 +8,17 @@ import numpy_financial as npf
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-@app.route('/', methods = ['GET'])
+@app.route('/', methods = ["GET", "POST"])
 def home():
+    if request.method == "POST":
+        address = str(request.form.get("address"))
+        downPayment = float(request.form.get("downPayment")) / 100
+        interestRate = float(request.form.get("interestRate")) / 100 / 12
+        term = int(request.form.get("term"))
+        cashFlow = float(request.form.get("cashFlow"))
+        capRate = float(request.form.get("capRate")) / 100
+        cashOnCash = float(request.form.get("cashOnCash")) / 100
+        
     return render_template('form.html')
 
 @app.route('/propertyscore', methods=["GET", "POST"])
@@ -141,7 +150,7 @@ def propertyscore():
     ltROI = "${:,.2f}".format(ltROI)
     stROI ="${:,.2f}".format(stROI)
     
-    return render_template('index.html', address = address, beds = beds, baths = baths, sqft = sqft, propertyType = propertyType, ltCashFlow = ltCashFlow, stCashFlow = stCashFlow, price = price, monthlyPayment = monthlyPayment, ltCapRate = ltCapRate, stCapRate = stCapRate, ltCashOnCash = ltCashOnCash, stCashOnCash = stCashOnCash, breakEvenLT = breakEvenLT, breakEvenST = breakEvenST, ltIncome = ltIncome, stIncome = stIncome, mortgage = mortgage, ltROI = ltROI, stROI = stROI, term = term, ltCashFlowicon = ltCashFlowicon, stCashFlowicon = stCashFlowicon, ltCapRateicon = ltCapRateicon, stCapRateicon = stCapRateicon, ltCOCicon = ltCOCicon, stCOCicon = stCOCicon, star1 = star1, star2 = star2, star3 = star3, star4 = star4, star5 = star5pa)
+    return render_template('index.html', address = address, beds = beds, baths = baths, sqft = sqft, propertyType = propertyType, ltCashFlow = ltCashFlow, stCashFlow = stCashFlow, price = price, monthlyPayment = monthlyPayment, ltCapRate = ltCapRate, stCapRate = stCapRate, ltCashOnCash = ltCashOnCash, stCashOnCash = stCashOnCash, breakEvenLT = breakEvenLT, breakEvenST = breakEvenST, ltIncome = ltIncome, stIncome = stIncome, mortgage = mortgage, ltROI = ltROI, stROI = stROI, term = term, ltCashFlowicon = ltCashFlowicon, stCashFlowicon = stCashFlowicon, ltCapRateicon = ltCapRateicon, stCapRateicon = stCapRateicon, ltCOCicon = ltCOCicon, stCOCicon = stCOCicon, star1 = star1, star2 = star2, star3 = star3, star4 = star4, star5 = star5)
 
 if __name__ == '__main__':
     app.debug=True

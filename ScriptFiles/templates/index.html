@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .fa-check
+        {
+            color: green;
+        }
+        .fa-remove
+        {
+            color: red;
+        }
+        .color-gold
+        {
+            color: gold;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PROPERTYSCORE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/fontawesome5-overrides.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/Bootstrap-4---Table-Fixed-Header.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/Header-Blue.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/Map-Clean.css')}}">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-text mx-3"><span>Propertyscore</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fa fa-home"></i><span>Property Score</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa fa-map-marker"></i><span>Location Score</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Rules &amp; Regulations</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Address" name="addressSearch"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                        </form>
+                    </div>
+                </nav>
+                <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding: 15px;"><h3 class="text-dark mb-0">{{address}}</h3>
+                    <div class="container text-end" style="padding-left: 0px;width: 10%;margin-right: 5%;"><i class="{{star1}}"></i><i class="{{star2}}"></i><i class="{{star3}}"></i><i class="{{star4}}"></i><i class="{{star5}}"></i>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6" style="width: 50%;">
+                            <div class="row" style="width: 100%;margin-right: 4px;">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">{{propertyType}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-success text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">{{sqft}} SQFT</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-info text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">{{beds}} Beds</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-warning text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">{{baths}} Baths</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="width: 100%;margin-right: 4px;">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3" style="height: 47px;">
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h6 class="text-primary fw-bold m-0" style="width: 85px;">Financials</h6>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 75px;">
+                                                    <h6 class="text-primary fw-bold m-0" style="width: 85px;">Traditional</h6>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 75px;">
+                                                    <h6 class="text-primary fw-bold m-0" style="width: 85px;padding-left: 1px;">Short Term</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">Cash Flow</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{ltCashFlow}}<i class="{{ltCashFlowicon}}"></i></h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{stCashFlow}}<i class="{{stCashFlowicon}}"></i></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">Price</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{price}}</h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{price}}</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">Monthly Payment</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{monthlyPayment}}</h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{monthlyPayment}}</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">Cap Rate</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{ltCapRate}}<i class="{{ltCapRateicon}}"></i></h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{stCapRate}}<i class="{{stCapRateicon}}"></i></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">Cash On Cash</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{ltCashOnCash}}<i class="{{ltCOCicon}}"></i></h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{stCashOnCash}}<i class="{{stCOCicon}}"></i></h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{term}} Year Return</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{ltROI}}</h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{stROI}}</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">Break Even Time</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h4 class="small fw-bold">{{breakEvenLT}}</h4>
+                                                </div>
+                                                <div class="col" style="height: 20px;width: 10px;padding-right: 0px;">
+                                                    <h4 class="small fw-bold">{{breakEvenST}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="width: 50%;"><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDnYCe9ih0LgLIDY37GUyjsihcXev8sHO0&amp;q=%7B%7BmapAddress%7D%7D&amp;zoom=11" width="100%" height="400"></iframe></div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © PROPERTYSCORE&nbsp;2021</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
