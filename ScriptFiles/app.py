@@ -5,6 +5,21 @@ from datetime import date
 import pandas as pd
 import numpy_financial as npf
 
+def DollarFormat(dol):
+    return "${:,.2f}".format(dol)
+
+def YearFormat(year):
+    return "{:,} years".format(year)
+
+def PercFormat(perc):
+    return "{:,.2f}%".format(perc)
+
+def EmptyStar():
+    return "fa fa-star"
+
+def GoldStar():
+    return "fa fa-star color-gold"
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 
@@ -34,7 +49,9 @@ def propertyscore():
     price = 100000
     
     #formulas
+    #downpayment = downpayment percentage * price
     downPayment *= price
+    #loan = price - downpayment
     loan = price - downPayment
     mortgage = npf.pmt(interestRate, term * 12, -loan)
     allin = downPayment + price * .05
@@ -102,55 +119,22 @@ def propertyscore():
         stCOCicon = "fa fa-check"
     else:
         stCOCicon = "fa fa-remove"
+    
     score = 'A'
         
     if score == 'A':
-        star1 = "fa fa-star color-gold"
-        star2 = "fa fa-star color-gold"
-        star3 = "fa fa-star color-gold"
-        star4 = "fa fa-star color-gold"
-        star5 = "fa fa-star color-gold"
+        star1, star2, star3, star4, star5 = GoldStar(), GoldStar(), GoldStar(), GoldStar(), GoldStar()
     
     elif score == 'B':
-        star1 = "fa fa-star color-gold"
-        star2 = "fa fa-star color-gold"
-        star3 = "fa fa-star color-gold"
-        star4 = "fa fa-star color-gold"
-        star5 = "fa fa-star"
+        star1, star2, star3, star4, star5 = GoldStar(), GoldStar(), GoldStar(), GoldStar(), EmptyStar()
         
     elif score == 'C':
-        star1 = "fa fa-star color-gold"
-        star2 = "fa fa-star color-gold"
-        star3 = "fa fa-star color-gold"
-        star4 = "fa fa-star"
-        star5 = "fa fa-star"
+        star1, star2, star3, star4, star5 = GoldStar(), GoldStar(), GoldStar(), EmptyStar(), EmptyStar()
         
     elif score == 'D':
-        star1 = "fa fa-star color-gold"
-        star2 = "fa fa-star color-gold"
-        star3 = "fa fa-star"
-        star4 = "fa fa-star"
-        star5 = "fa fa-star"
-    
-    #format
-    sqft = "{:,d}".format(sqft)
-    ltCashFlow = "${:,.2f}".format(ltCashFlow)
-    stCashFlow = "${:,.2f}".format(stCashFlow)
-    price = "${:,.2f}".format(price)
-    monthlyPayment = "${:,.2f}".format(monthlyPayment)
-    ltCapRate = "{:,.2f}%".format(ltCapRate)
-    stCapRate = "{:,.2f}%".format(stCapRate)
-    ltCashOnCash = "{:,.2f}%".format(ltCashOnCash)
-    stCashOnCash = "{:,.2f}%".format(stCashOnCash)
-    breakEvenLT = "{:,} years".format(breakEvenLT)
-    breakEvenST = "{:,} years".format(breakEvenST)
-    ltIncome = "${:,.2f}".format(ltIncome)
-    stIncome = "${:,.2f}".format(stIncome)
-    mortgage = "${:,.2f}".format(mortgage)
-    ltROI = "${:,.2f}".format(ltROI)
-    stROI ="${:,.2f}".format(stROI)
-    
-    return render_template('index.html', address = address, beds = beds, baths = baths, sqft = sqft, propertyType = propertyType, ltCashFlow = ltCashFlow, stCashFlow = stCashFlow, price = price, monthlyPayment = monthlyPayment, ltCapRate = ltCapRate, stCapRate = stCapRate, ltCashOnCash = ltCashOnCash, stCashOnCash = stCashOnCash, breakEvenLT = breakEvenLT, breakEvenST = breakEvenST, ltIncome = ltIncome, stIncome = stIncome, mortgage = mortgage, ltROI = ltROI, stROI = stROI, term = term, ltCashFlowicon = ltCashFlowicon, stCashFlowicon = stCashFlowicon, ltCapRateicon = ltCapRateicon, stCapRateicon = stCapRateicon, ltCOCicon = ltCOCicon, stCOCicon = stCOCicon, star1 = star1, star2 = star2, star3 = star3, star4 = star4, star5 = star5)
+        star1, star2, star3, star4, star5 = GoldStar(), GoldStar(), EmptyStar(), EmptyStar(), EmptyStar()
+
+    return render_template('index.html', address = address, beds = beds, baths = baths, sqft = "{:,d}".format(sqft), propertyType = propertyType, ltCashFlow = DollarFormat(ltCashFlow), stCashFlow = DollarFormat(stCashFlow), price = DollarFormat(price), monthlyPayment = DollarFormat(monthlyPayment), ltCapRate = PercFormat(ltCapRate), stCapRate = PercFormat(stCapRate), ltCashOnCash = PercFormat(ltCashOnCash), stCashOnCash = PercFormat(stCashOnCash), breakEvenLT = YearFormat(breakEvenLT), breakEvenST = YearFormat(breakEvenST), ltIncome = DollarFormat(ltIncome), stIncome = DollarFormat(stIncome), mortgage = DollarFormat(mortgage), ltROI = DollarFormat(ltROI), stROI = DollarFormat(stROI), term = term, ltCashFlowicon = ltCashFlowicon, stCashFlowicon = stCashFlowicon, ltCapRateicon = ltCapRateicon, stCapRateicon = stCapRateicon, ltCOCicon = ltCOCicon, stCOCicon = stCOCicon, star1 = star1, star2 = star2, star3 = star3, star4 = star4, star5 = star5)
 
 if __name__ == '__main__':
     app.debug=True
